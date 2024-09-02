@@ -1,43 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
+  <meta charset="UTF-8">
+  <title>Template</title>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Workflow</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="/assets/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-
-  <!-- Custom styles for this template-->
-  <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
-
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
-<body id="page-top">
+  <!-- Preloader -->
+<!--  <div class="preloader flex-column justify-content-center align-items-center">-->
+<!--    <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">-->
+<!--  </div>-->
+  <base href="/">
 
-<!-- Scroll to Top Button-->
+  <app-root></app-root>
 
-<!-- Bootstrap core JavaScript-->
-<script src="/assets/vendor/jquery/jquery.min.js"></script>
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</div>
+<!-- ./wrapper -->
 
-<!-- Core plugin JavaScript-->
-<script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="/assets/js/sb-admin-2.min.js"></script>
-
-
-<H1>test</H1>
-<app-root></app-root>
-
-
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.js"></script>
 </body>
-
 </html>
