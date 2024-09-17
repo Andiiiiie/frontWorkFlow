@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {API_URL} from "../app.component";
-import {catchError, map, Observable, throwError} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {throwError,Observable} from "rxjs";
 import {ProcessFollower} from "../models/ProcessFollower";
 import {ResultType} from "../models/resultType";
 import { Task } from "../models/task";
@@ -33,6 +34,13 @@ export class ProcessService {
   getProcesses() :Observable<Process[]>
   {
     return this.http.get<any>(`${API_URL}/processes`).pipe(
+      map(response => response.data as Process[])  // Assurez-vous que response.data est de type ProcessType
+    )
+  }
+
+  getProcessesByType(idType:string):Observable<Process[]>
+  {
+    return this.http.get<any>(`${API_URL}/processes?processType=${idType}`).pipe(
       map(response => response.data as Process[])  // Assurez-vous que response.data est de type ProcessType
     )
   }
@@ -78,6 +86,19 @@ export class ProcessService {
   {
     return this.http.get<any>(`${API_URL}/tasks/processes/${idTask}`).pipe(
       map(response => response.data as Process[])  // Assurez-vous que response.data est de type ProcessType
+    )
+  }
+
+
+  getTotalOnGoingProcess(): Observable<number> {
+    return this.http.get<any>(`${API_URL}/processes/totalOnGoing`).pipe(
+      map(response => response.data as number)  // Assurez-vous que response.data est de type ProcessType
+    )
+  }
+
+  getTotalFinishedProcess(): Observable<number> {
+    return this.http.get<any>(`${API_URL}/processes/totalFinished`).pipe(
+      map(response => response.data as number)  // Assurez-vous que response.data est de type ProcessType
     )
   }
 }

@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, map, Observable, throwError} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {throwError,Observable} from "rxjs";
 import {API_URL} from "../app.component";
 import {ResultType} from "../models/resultType";
 

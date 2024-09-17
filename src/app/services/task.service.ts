@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {API_URL} from "../app.component";
-import {catchError, map, Observable, throwError} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {throwError,Observable} from "rxjs";
 import {StepService} from "./step.service";
 import { Task } from "../models/task";
 import {Step} from "../models/step";

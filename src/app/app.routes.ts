@@ -21,6 +21,7 @@ import {TaskProcessListComponent} from "./components/config/task/task-process-li
 import {ProcessFormComponent} from "./components/use/process/process-form/process-form.component";
 import {ProcessListComponent} from "./components/use/process/process-list/process-list.component";
 import {ProcessPerformComponent} from "./components/use/process/process-perform/process-perform.component";
+import {ProcessStatistiqueComponent} from "./components/monitoring/process-statistique/process-statistique.component";
 
 export const routes: Routes = [
   {path:'',component: HomeComponent},
@@ -45,4 +46,6 @@ export const routes: Routes = [
   {path:'processes/create/:id',component:ProcessFormComponent},
   {path:'processes/list',component:ProcessListComponent},
   {path:'processes/perform/:id',component:ProcessPerformComponent},
+
+  {path:'stats',component:ProcessStatistiqueComponent}
 ];

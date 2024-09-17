@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {API_URL} from "../app.component";
-import {catchError, map, Observable, throwError} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {throwError,Observable} from "rxjs";
 import {ProcessType} from "../models/processType";
 import { Task } from "../models/task";
 
@@ -31,21 +32,23 @@ export class ProcessTypeService{
       map(response => response.data as ProcessType[]) // Convertit les données de réponse en tableau de ProcessType
     );
   }
+
+
   getProcessTypesWithPagination(size:number,page:number): Observable<ProcessType[]> {
-    return this.http.get<any>(`${API_URL}/processTypes/${page}/${size}`).pipe(
+    return this.http.get<any>(`${API_URL}/processTypes?page=${page}&size=${size}`).pipe(
       map(response => response.data as ProcessType[]) // Convertit les données de réponse en tableau de ProcessType
     );
   }
 
 
   getProcessTypesByStateAndPagination(state: string,size:number,page:number): Observable<ProcessType[]> {
-    return this.http.get<any>(`${API_URL}/processTypes/state/${state}/${page}/${size}`).pipe(
+    return this.http.get<any>(`${API_URL}/processTypes/state?state=${state}&page=${page}&size=${size}`).pipe(
       map(response => response.data as ProcessType[]) // Convertit les données de réponse en tableau de ProcessType
     );
   }
 
   getProcessTypesByState(state: string): Observable<ProcessType[]> {
-    return this.http.get<any>(`${API_URL}/processTypes/state/${state}`).pipe(
+    return this.http.get<any>(`${API_URL}/processTypes/state?state=${state}`).pipe(
       map(response => response.data as ProcessType[]) // Convertit les données de réponse en tableau de ProcessType
     );
   }
@@ -78,5 +81,18 @@ export class ProcessTypeService{
   private handleError(error: any) {
     console.error('Erreur de l\'API :', error);
     return throwError('Erreur lors de la création du processus');
+  }
+
+
+  getTotalConfiguratedProcessTypes(): Observable<number> {
+    return this.http.get<any>(`${API_URL}/processTypes/totalConfiguratedProcesseTypes`).pipe(
+      map(response => response.data as number) // Convertit les données de réponse en tableau de ProcessType
+    );
+  }
+
+  getTotalOnGoingConfigurationProcessTypes(): Observable<number> {
+    return this.http.get<any>(`${API_URL}/processTypes/totalOnGoingConfigurationProcessTypes`).pipe(
+      map(response => response.data as number) // Convertit les données de réponse en tableau de ProcessType
+    );
   }
 }
