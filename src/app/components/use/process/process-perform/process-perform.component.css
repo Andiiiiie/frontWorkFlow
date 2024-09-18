@@ -1,0 +1,21 @@
+/* Style pour les étapes complétées */
+.step-completed .mat-step-header {
+  background-color: #4caf50 !important;
+  color: #fff !important;
+}
+
+.step-completed .mat-step-icon {
+  background-color: #4caf50 !important;
+  color: #fff !important;
+}
+
+/* Style pour les étapes non complétées */
+.mat-step-header {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.mat-step-icon {
+  background-color: #ccc;
+  color: #000;
+}

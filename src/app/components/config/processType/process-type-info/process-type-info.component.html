@@ -1,0 +1,50 @@
+<style>
+  .bg-red{
+    border-color: red;
+  }
+</style>
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="card-dark">
+    <div class="card-header">
+      <h3 class="card-title"> Process type info </h3>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>Name: {{processType.name}}</li>
+        <li>Description: {{processType.description}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-default">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let task of tasks"  >
+          <td>{{task.state}}</td>
+          <td>{{task.name}}</td>
+          <td>{{task.description}}</td>
+          <td>
+            <button  [routerLink]="['/tasks/processes',task.idTask]" class="btn btn-secondary btn-sm mx-1" >View Processes <i class="fas fa-eye"></i></button>
+
+            <!--            <button (click)="up(step)" class="btn btn-secondary btn-sm mx-1" >Up <i class="fas fa-arrow-up"></i></button>-->
+            <!--            <button (click)="down(step)" class="btn btn-secondary btn-sm mx-1" >Down <i class="fas fa-arrow-down"></i></button>-->
+            <!--            <button><i class="fas fa-edit"></i>Edit</button>-->
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="card-dark">
+    <div class="card-header">
+      <h3 class="card-title"> Process type Configuration </h3>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>Name: {{processType.name}}</li>
+        <li>Description: {{processType.description}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-default">
+    <div class="card-header">
+      <h3 class="card-title"><h2>Add Step</h2></h3>
+
+      <div class="">
+        <form id="myForm" class="input-group" (ngSubmit)="onSubmit()">
+          <input class="form-control" type="text" [(ngModel)]="newStep.name" name="name" placeholder="Name">
+          <input class="form-control" type="text" [(ngModel)]="newStep.description" name="description" placeholder="Description">
+          <button type="submit" class="btn btn-default">
+            add
+            <i class="fas fa-plus"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Order</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let step of steps">
+          <td>{{step.order}}</td>
+          <td>{{step.name}}</td>
+          <td>{{step.description}}</td>
+          <td>
+            <button (click)="up(step)" class="btn btn-secondary btn-sm mx-1" >Up <i class="fas fa-arrow-up"></i></button>
+            <button (click)="down(step)" class="btn btn-secondary btn-sm mx-1" >Down <i class="fas fa-arrow-down"></i></button>
+            <button  [routerLink]="['/steps/config',step.idStep]" class="btn btn-secondary btn-sm mx-1" >Configure <i class="fas fa-edit"></i></button>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button  class="btn btn-dark btn-sm mx-1"  (click)="save()">
+        Save change <i class="fas fa-save"></i>
+      </button>
+    </div>
+    <div class="card-footer">
+    </div>
+  </div>
+</div>

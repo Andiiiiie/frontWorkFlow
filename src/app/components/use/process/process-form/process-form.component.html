@@ -1,0 +1,30 @@
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Process creation type {{processType.name}}</h3>
+
+      <div class="card-tools">
+
+      </div>
+    </div>
+    <form   (ngSubmit)="onSubmit()">
+      <div class="card-body">
+        <div class="form-group row">
+          <label class="col-sm-3 mb-3 mb-sm-0 ">Request reference :</label>
+          <input type="text" class="form-control col-9" [(ngModel)]="newProcess.requestReference" name="reference" placeholder="REF0900...">
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 mb-3 mb-sm-0 ">Creation Date :</label>
+          <input type="datetime-local" class="form-control col-9" [(ngModel)]="newProcess.insertionDate" name="date">
+        </div>
+
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer align-content-center">
+        <button type="submit" class="btn btn-dark "> Submit </button>
+      </div>
+    </form>
+
+    <!-- /.card-footer-->
+  </div>
+</div>

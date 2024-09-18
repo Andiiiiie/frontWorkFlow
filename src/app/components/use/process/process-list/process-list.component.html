@@ -1,0 +1,55 @@
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="card-default">
+    <div class="card-header">
+      <h3 class="card-title">Process Types</h3>
+    </div>
+    <div class="">
+      <form id="myForm" class="input-group" >
+        <label>Process type</label>
+        <select class="form-control"  name="selectedStep" [(ngModel)]="selectedProcessType" (change)="onChangeType()">
+          <option *ngFor="let processType of processTypes" [value]="processType.idProcessType">{{processType.name}}</option>
+        </select>
+      </form>
+    </div>
+    <div class="card-body">
+<!--      <h6>Page:{{page}}</h6>-->
+
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>type</th>
+          <th>Reference</th>
+          <th>State</th>
+          <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let process of processes">
+          <td></td>
+          <td>{{process.processTypeName}}</td>
+          <td>{{process.requestReference}}</td>
+          <td *ngIf="process.finishedDate!=null" >Finished</td>
+          <td *ngIf="process.finishedDate==null" >En cours</td>
+          <td>
+            <button  [routerLink]="['/processes/perform',process.id]" class="btn btn-secondary btn-sm mx-1" >Perform <i class="fas fa-edit"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+<!--      <form action="">-->
+<!--        <div class="">-->
+<!--          <label for="size">Size</label>-->
+<!--          <input type="number" class="form-control" id="size" name="size" [(ngModel)]="size"  (ngModelChange)="setSize(size)">-->
+<!--        </div>-->
+<!--      </form>-->
+<!--      <div class="d-flex justify-content-between">-->
+<!--        <button class="btn btn-primary" (click)="previous()" >Previous</button>-->
+<!--        <button class="btn btn-primary" (click)="next()" >Next</button>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>
+
