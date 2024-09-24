@@ -4,7 +4,6 @@ import {provideRouter, withHashLocation} from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {HttpClientModule, provideHttpClient, withInterceptors} from "@angular/common/http";
-import {ResultTypeService} from "./services/resultType.service";
 import {JwtInterceptor} from "@auth0/angular-jwt";
 import {jwtInterceptorFn} from "./auth/jwt-interceptor.interceptor";
 
@@ -24,7 +23,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule),
-    ResultTypeService,
     // Ajout de l'interceptor JWT
     importProvidersFrom(HttpClientModule),
     {
