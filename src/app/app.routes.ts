@@ -22,9 +22,12 @@ import {ProcessFormComponent} from "./components/use/process/process-form/proces
 import {ProcessListComponent} from "./components/use/process/process-list/process-list.component";
 import {ProcessPerformComponent} from "./components/use/process/process-perform/process-perform.component";
 import {ProcessStatistiqueComponent} from "./components/monitoring/process-statistique/process-statistique.component";
+import {authGuardGuard} from "./auth/auth-guard.guard";
+import {LoginComponent} from "./components/global/login/login.component";
 
 export const routes: Routes = [
-  {path:'',component: HomeComponent},
+  {path:'',component: HomeComponent,canActivate:[authGuardGuard]},
+  {path:'login',component: LoginComponent},
   {path:'info/:id',component:InfoComponent},
   {path:'testeur',component:TesteurComponent},
   {path:'stepper',component:StepperComponent},
