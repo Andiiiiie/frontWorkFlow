@@ -1,0 +1,77 @@
+<style>
+  .done
+  {
+    background-color: #0f401b;
+  }
+
+  .finished {
+    background-color: #0f401b; /* Example style for finished steps */
+  }
+</style>
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="card-default">
+    <div class="card-header">
+      <h3 class="card-title">Process Perform</h3>
+
+    </div>
+    <div class="card-body">
+      <div *ngIf="process">
+        <p><strong>Request reference:</strong> {{ process.requestReference }}</p>
+        <p><strong>Type :</strong> {{ process.typeName }}</p>
+        <p><strong>Version:</strong> {{ process.processTypeVersionReference }}</p>
+        <p *ngIf="actualTask"><strong>Actual Task:</strong> {{ actualTask.name }}</p>
+        <p *ngIf="!actualTask"><strong>FINISHED OR STOPPED</strong> </p>
+
+        <!-- Add more fields as necessary -->
+      </div>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Task</th>
+          <th>Result</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let history of list"  [ngClass]="{'done':history.id && !history.actual}">
+          <td>{{history.taskName}}</td>
+          <td> <p *ngIf="history.resultTypeId">{{history.resultTypeName}}</p> <p *ngIf="history.resultTypeId==null">Normal</p></td>
+          <td>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <!-- Example usage in a component template -->
+      <mat-horizontal-stepper>
+        <mat-step *ngFor="let step of list" label="{{step.taskName}}"  [ngClass]="{'finished': step.endingTime}" >
+          <div *ngIf="step.id">
+            <p><strong>Starting time </strong> {{ step.startingTime }}</p>
+            <div> <strong>Result:</strong> <p *ngIf="step.resultTypeId">{{step.resultTypeName}}</p> <p *ngIf="step.resultTypeId==null">Normal</p> </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+
+
+    </div>
+    <div class="card-footer">
+            <form action="" *ngIf="exceptions.length!=0">
+              <div class="">
+                <label >Exception</label>
+                <select name="" id="" [(ngModel)]="selectedExceptionId">
+                  <option>No Exception</option>
+                  <option *ngFor="let exception of exceptions" value="{{exception.resultTypeId}}">{{exception.resultTypeName}}</option>
+                </select>
+              </div>
+            </form>
+            <div class="d-flex justify-content-between" *ngIf="actualTask">
+              <button mat-raised-button color="primary">
+                <mat-icon>home</mat-icon>
+                <button class="btn btn-dark" (click)="next()" >Next</button>
+              </button>
+            </div>
+    </div>
+  </div>
+</div>

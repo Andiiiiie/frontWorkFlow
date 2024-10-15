@@ -23,11 +23,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule),
-    // Ajout de l'interceptor JWT
-    importProvidersFrom(HttpClientModule),
-    {
-      provide: HttpClientModule,
-      useValue: withInterceptors([jwtInterceptorFn]), // Ajout de l'interceptor JWT
-    }
+    // // Ajout de l'interceptor JWT
+    // importProvidersFrom(HttpClientModule),
+    // {
+    //   provide: HttpClientModule,
+    //   useValue: withInterceptors([jwtInterceptorFn]), // Ajout de l'interceptor JWT
+    // }
+    provideHttpClient(withInterceptors([jwtInterceptorFn]))
   ]
 };

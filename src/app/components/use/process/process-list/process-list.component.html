@@ -1,0 +1,71 @@
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="card-default">
+    <div class="card-header">
+      <h3 class="card-title">Process list</h3>
+      <div class="">
+        <!--        <form id="myForm" class="input-group" (ngSubmit)="onSubmit()">-->
+        <!--          <input class="form-control" type="text" [(ngModel)]="newResultType.designation" name="designation" placeholder="Error">-->
+        <!--          <button type="submit" class="btn btn-default">-->
+        <!--            Enregistrer-->
+        <!--            <i class="fas fa-save"></i>-->
+        <!--          </button>-->
+        <!--        </form>-->
+      </div>
+    </div>
+    <div class="card-body">
+      <h6>Page:{{page}}</h6>
+      <form [formGroup]="filterForm">
+        <div class="form-group">
+          <label for="state">State</label>
+          <select id="state" formControlName="state" class="form-control">
+            <option value="-1">All States</option>
+            <option *ngFor="let state of states" [value]="state.id">{{ state.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="type">Type</label>
+          <select id="type" formControlName="type" class="form-control">
+            <option value="-1">All Types</option>
+            <option *ngFor="let type of types" [value]="type.id">{{ type.name }}</option>
+          </select>
+        </div>
+      </form>
+      <div class="" *ngIf="processes.length==0">
+        <h3>NO PROCESS ..</h3>
+      </div>
+      <table class="table table-bordered" *ngIf="processes.length!=0">
+        <thead>
+        <tr>
+          <th>Reference</th>
+          <th>Version</th>
+          <th>type</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let process of processes">
+          <td>{{process.requestReference }}</td>
+          <td>{{process.processTypeVersionId }}</td>
+          <td>{{process.typeName}}</td>
+          <td>
+            <button  [routerLink]="['/process-perform',process.id]" class="btn btn-secondary btn-sm mx-1" >view <i class="fas fa-eye "></i></button>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <form action="">
+        <div class="">
+          <label for="size">Size</label>
+          <input type="number" class="form-control" id="size" name="size" min="1" [(ngModel)]="size"  (ngModelChange)="setSize(size)">
+        </div>
+      </form>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-dark" (click)="previous()" *ngIf="page>1" >Previous</button>
+        <button class="btn btn-dark" (click)="next()" >Next</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Version configuration</h3>
+
+      <div class="card-tools">
+
+      </div>
+    </div>
+    <div class="card-body">
+      <div *ngIf="processTypeVersion">
+        <p><strong>Reference:</strong> {{ processTypeVersion.reference }}</p>
+        <p><strong>type:</strong> {{ processTypeVersion.processTypeName }}</p>
+        <!-- Add more fields as necessary -->
+      </div>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Order</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let step of steps">
+          <td>{{step.order}}</td>
+          <td>{{step.name}}</td>
+          <td>{{step.description}}</td>
+          <td>
+            <button (click)="up(step)" class="btn btn-secondary btn-sm mx-1" >Up <i class="fas fa-arrow-up"></i></button>
+            <button (click)="down(step)" class="btn btn-secondary btn-sm mx-1" >Down <i class="fas fa-arrow-down"></i></button>
+            <button  [routerLink]="['/step-config',step.id]" class="btn btn-secondary btn-sm mx-1" >Configure <i class="fas fa-edit"></i></button>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button  class="btn btn-dark btn-sm mx-1"  (click)="save()">
+        Save change <i class="fas fa-save"></i>
+      </button>
+      <button  class="btn btn-dark btn-sm mx-1"  (click)="addStep()">
+        Add step <i class="fas fa-plus"></i>
+      </button>
+    </div>
+
+
+
+    <!-- /.card-footer-->
+  </div>
+</div>

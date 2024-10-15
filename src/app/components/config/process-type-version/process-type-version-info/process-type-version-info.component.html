@@ -1,0 +1,35 @@
+<div class="card-default">
+  <div class="card-header">
+    <h3 class="card-title">Process type version info</h3>
+
+  </div>
+  <div class="card-body">
+    <div *ngIf="processTypeVersionInfo">
+      <p><strong>version reference:</strong> {{ processTypeVersionInfo.processTypeVersion.reference }}</p>
+      <p><strong>process type name:</strong> {{ processTypeVersionInfo.processTypeVersion.processTypeName }}</p>
+      <!-- Add more fields as necessary -->
+    </div>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>step order</th>
+        <th>step name</th>
+        <th>Tasks</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let step of processTypeVersionInfo.listStep; let i = index">
+        <td>{{ step.order }}</td>
+        <td>{{ step.name }}</td>
+        <td>
+          <ol>
+            <li *ngFor="let task of processTypeVersionInfo.listTask[i]">{{ task.name }}</li>
+          </ol>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

@@ -1,15 +1,15 @@
 <!-- Navbar -->
-<app-navbar></app-navbar>
+<app-navbar *ngIf="!isLoginRoute()" ></app-navbar>
 
 <!-- Main Sidebar Container -->
-<app-menu></app-menu>
+<app-menu *ngIf="!isLoginRoute()" ></app-menu>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" >
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-      <router-outlet />
+      <router-outlet></router-outlet>
     </div><!-- /.container-fluid -->
   </section>
   <!-- /.content -->

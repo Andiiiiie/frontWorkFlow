@@ -7,17 +7,18 @@ import {AuthService} from "../../../services/auth.service";
 @Component({
   standalone: true,
   selector: 'app-login',
-  template: `
-    <form (submit)="onSubmit()">
-      <label>Email</label>
-      <input [(ngModel)]="credentials.login" type="text" name="login" required />
-
-      <label>Password</label>
-      <input [(ngModel)]="credentials.password" type="password" name="password" required />
-
-      <button type="submit">Login</button>
-    </form>
-  `,
+  templateUrl:'login.component.html',
+  // template: `
+  //   <form (submit)="onSubmit()">
+  //     <label>Email</label>
+  //     <input [(ngModel)]="credentials.login" type="text" name="login" required />
+  //
+  //     <label>Password</label>
+  //     <input [(ngModel)]="credentials.password" type="password" name="password" required />
+  //
+  //     <button type="submit">Login</button>
+  //   </form>
+  // `,
   imports: [FormsModule],
   providers: [AuthService]
 })
@@ -35,7 +36,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.log(err)
-        console.error('Erreur lors de la connexion:', err); // Gère l'erreur
+        console.log('Erreur lors de la connexion:', err); // Gère l'erreur
         // Affichez un message d'erreur à l'utilisateur si nécessaire
       }
     });

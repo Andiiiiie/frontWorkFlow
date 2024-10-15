@@ -1,0 +1,23 @@
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Process type Informations</h3>
+
+      <div class="card-tools">
+
+      </div>
+    </div>
+    <div class="card-body">
+      <div *ngIf="processType">
+      <p><strong>ID:</strong> {{ processType.id }}</p>
+      <p><strong>Name:</strong> {{ processType.name }}</p>
+      <p><strong>Description:</strong> {{ processType.description }}</p>
+      <!-- Add more fields as necessary -->
+    </div>
+    </div>
+
+
+
+    <!-- /.card-footer-->
+  </div>
+</div>

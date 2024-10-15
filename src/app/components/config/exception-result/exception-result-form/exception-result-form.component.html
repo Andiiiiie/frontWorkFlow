@@ -1,0 +1,33 @@
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Add task</h3>
+    </div>
+    <form (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label for="resultTypeId">Result Type</label>
+        <select id="resultTypeId" name="resultTypeId" [(ngModel)]="newExceptionResult.resultTypeId" class="form-control" required>
+          <option *ngFor="let result of resultTypes" [value]="result.id">{{ result.name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="nextTaskId">Next Task</label>
+        <select id="nextTaskId" name="nextTaskId" [(ngModel)]="newExceptionResult.nextTaskId" class="form-control" required>
+          <option *ngFor="let task of tasks" [value]="task.id">{{ task.name }}</option>
+        </select>
+      </div>
+      <div class="form-group" *ngIf="!newExceptionResult.nextTaskId">
+        <label for="isLastIn">Is Last In</label>
+        <select id="isLastIn" name="isLastIn" [(ngModel)]="isLastIn" class="form-control">
+          <option [value]="'process'">Process</option>
+          <option [value]="'step'">Step</option>
+        </select>
+      </div>
+      <div *ngIf="error!=''" class="text-danger">
+        {{error}}
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!-- /.card-footer-->
+  </div>
+
