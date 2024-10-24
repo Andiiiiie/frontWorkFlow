@@ -51,6 +51,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  getUserId(): string | null {
+    return localStorage.getItem('userId');
+  }
+
   setToken(token: Token) {
     console.log('Token ito', token);
     localStorage.setItem('token', token.token);
