@@ -13,7 +13,7 @@ export class ResultTypeService {
   constructor(private http:HttpClient) { }
 
   getAll(): Observable<ResultType[]> {
-    return this.http.get<any>(`${API_URL}/admin/resultTypes`).pipe(
+    return this.http.get<any>(`${API_URL}/resultTypes`).pipe(
       map(response=>response.data as ResultType[])
     );
   }

@@ -13,7 +13,7 @@ export class ProcessTypeService {
   constructor(private http:HttpClient) { }
 
   createProcessType(item: ProcessType): Observable<ProcessType> {
-    return this.http.post<any>(`${API_URL}/admin/processTypes`, item).pipe(
+    return this.http.post<any>(`${API_URL}/owner/processTypes`, item).pipe(
       map(response =>
       {
         if(response.status=== 'error')
@@ -28,7 +28,7 @@ export class ProcessTypeService {
   }
 
   listProcessTypes(size:number,page:number): Observable<ProcessType[]> {
-    return this.http.get<any>(`${API_URL}/admin/processTypes?size=${size}&page=${page}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/processTypes?size=${size}&page=${page}`).pipe(
       map(response =>
       {
         if(response.status=== 'error')
@@ -43,7 +43,7 @@ export class ProcessTypeService {
 
 
   getProcessType(id:number): Observable<ProcessType> {
-    return this.http.get<any>(`${API_URL}/admin/processTypes/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/processTypes/${id}`).pipe(
       map(response =>
       {
         if(response.status=== 'error')
@@ -58,7 +58,7 @@ export class ProcessTypeService {
 
 
   getValidProcessTypes(): Observable<ProcessType[]> {
-    return this.http.get<any>(`${API_URL}/admin/processTypes/valid`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/processTypes/valid`).pipe(
       map(response =>
       {
         if(response.status=== 'error')

@@ -16,7 +16,7 @@ export class ProcessTypeVersionService {
 
 
   createVersion(item: ProcessTypeVersion) {
-    return this.http.post<any>(`${API_URL}/processTypeVersions`, item).pipe(
+    return this.http.post<any>(`${API_URL}/owner/processTypeVersions`, item).pipe(
       map(response =>
       {
         if(response.status=== 'error')
@@ -31,7 +31,7 @@ export class ProcessTypeVersionService {
   }
 
   getVersionById(id:number): Observable<ProcessTypeVersion> {
-    return this.http.get<any>(`${API_URL}/processTypeVersions/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/processTypeVersions/${id}`).pipe(
       map(response =>
       {
         if(response.status=== 'error')
@@ -47,7 +47,7 @@ export class ProcessTypeVersionService {
 
 
   getVersionsList(id:number) {
-    return this.http.get<any>(`${API_URL}/processTypeVersions/type/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/processTypeVersions/type/${id}`).pipe(
       map(response => {
         if (response.status === 'error') {
           throw new Error(response.message);
@@ -59,7 +59,7 @@ export class ProcessTypeVersionService {
   }
 
   finalize(id:number){
-    return this.http.get<any>(`${API_URL}/processTypeVersions/finalize/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/processTypeVersions/finalize/${id}`).pipe(
       map(response => {
         if (response.status === 'error') {
           throw new Error(response.message);
@@ -71,7 +71,7 @@ export class ProcessTypeVersionService {
   }
 
   validate(id:number){
-    return this.http.get<any>(`${API_URL}/processTypeVersions/validate/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/processTypeVersions/validate/${id}`).pipe(
       map(response => {
         if (response.status === 'error') {
           throw new Error(response.message);
@@ -84,7 +84,7 @@ export class ProcessTypeVersionService {
 
 
   getLatestVersion(id:number): Observable<ProcessTypeVersion> {
-    return this.http.get<any>(`${API_URL}/processTypeVersions/latest/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/processTypeVersions/latest/${id}`).pipe(
       map(response =>
       {
         if(response.status=== 'error')

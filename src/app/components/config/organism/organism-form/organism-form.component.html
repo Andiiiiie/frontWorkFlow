@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">New Organism</h3>
+
+    <div class="card-tools">
+
+    </div>
+  </div>
+  <form   (ngSubmit)="onSubmit()">
+    <div class="card-body">
+      <div class="form-group"   >
+        <label >Name</label>
+        <input type="text" [(ngModel)]="newOrganism.name"  name="name" class="form-control"  >
+      </div>
+      <div class="form-group"   >
+        <label >Description</label>
+        <input type="text" [(ngModel)]="newOrganism.description"  name="name" class="form-control"  >
+      </div>
+      <div *ngIf="error!=''" class="text-danger">
+        {{error}}
+      </div>
+
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer align-content-center">
+      <button type="submit" class="btn btn-dark "> Submit </button>
+    </div>
+  </form>
+
+  <!-- /.card-footer-->
+</div>

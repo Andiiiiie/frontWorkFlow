@@ -1,58 +1,55 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ExceptionResult} from "../models/exception-result";
 import {Observable, throwError} from "rxjs";
-import {API_URL} from "../app.component";
+import {ConsumerToken} from "../models/consumer-token";
 import {catchError, map} from "rxjs/operators";
-import {Task} from "../models/task";
+import {API_URL} from "../app.component";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExceptionResultService {
+export class ConsumerTokenService {
 
   constructor(private http:HttpClient) { }
 
-  createExceptionResult(item:ExceptionResult): Observable<ExceptionResult> {
-    return this.http.post<any>(`${API_URL}/owner/exceptionResults`, item).pipe(
+  createConsumerToken(item:ConsumerToken): Observable<ConsumerToken> {
+    return this.http.post<any>(`${API_URL}/owner/token`, item).pipe(
       map(response => {
         if(response.status === 'error') {
           throw new Error(response.message);
         }
-        return response.data as ExceptionResult;
+        return response.data as ConsumerToken;
       }),
       catchError(this.handleError)
 
     );
   }
 
-  updateExceptionResult(item:ExceptionResult):Observable<ExceptionResult>
+  listTokens(id:number):Observable<ConsumerToken[]>
   {
-    return this.http.put<any>(`${API_URL}/owner/exceptionResults`, item).pipe(
+    return this.http.get<any>(`${API_URL}/owner/token/${id}`).pipe(
       map(response => {
         if(response.status === 'error') {
           throw new Error(response.message);
         }
-        return response.data as ExceptionResult;
+        return response.data as ConsumerToken[];
       }),
       catchError(this.handleError)
-
     );
   }
 
-  getExceptionsByTask(id:number):Observable<ExceptionResult[]>
+  deleteToken(id:string):Observable<ConsumerToken>
   {
-    return this.http.get<any>(`${API_URL}/owner/exceptionResults/task/${id}`).pipe(
+    return this.http.delete<any>(`${API_URL}/owner/token/${id}`).pipe(
       map(response => {
         if(response.status === 'error') {
           throw new Error(response.message);
         }
-        return response.data as ExceptionResult[];
+        return response.data as ConsumerToken;
       }),
       catchError(this.handleError)
     );
   }
-
 
 
   private handleError(error: any) {

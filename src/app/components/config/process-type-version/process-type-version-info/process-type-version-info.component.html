@@ -18,12 +18,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let step of processTypeVersionInfo.listStep; let i = index">
-        <td>{{ step.order }}</td>
-        <td>{{ step.name }}</td>
+      <tr *ngFor="let step of processTypeVersionInfo.listStep">
+        <td>{{ step.step.order }}</td>
+        <td>{{ step.step.name }}</td>
         <td>
           <ol>
-            <li *ngFor="let task of processTypeVersionInfo.listTask[i]">{{ task.name }}</li>
+            <li *ngFor="let task of step.tasks" >{{ task.name }}</li>
           </ol>
         </td>
       </tr>

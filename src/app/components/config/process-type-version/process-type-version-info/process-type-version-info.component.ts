@@ -59,14 +59,15 @@ export class ProcessTypeVersionInfoComponent implements OnInit {
     this.stepService.listStep(this.processTypeVersionInfo.processTypeVersion.id).subscribe(
       {
         next: steps => {
-          this.processTypeVersionInfo.listStep = steps;
-          this.processTypeVersionInfo.listTask=[];
-          for(let step of this.processTypeVersionInfo.listStep)
+          const  stepInfoList: Step[] = steps;
+          this.processTypeVersionInfo.listStep=[];
+          for(let step of stepInfoList)
           {
             this.taskService.getTasksByStep(step.id).subscribe(
               {
                 next: tasks => {
-                  this.processTypeVersionInfo.listTask.push(tasks);
+                  let stepInfo = {step: step, tasks: tasks};
+                  this.processTypeVersionInfo.listStep.push(stepInfo);
                 },
                 error: error => {
                   console.error('Error getting tasks:', error);
@@ -74,6 +75,7 @@ export class ProcessTypeVersionInfoComponent implements OnInit {
               }
             );
           }
+          this.processTypeVersionInfo.listStep.sort((a, b) => a.step.order - b.step.order);
         },
         error: error => {
           console.error('Error getting steps:', error);

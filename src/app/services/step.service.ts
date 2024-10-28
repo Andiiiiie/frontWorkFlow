@@ -16,7 +16,7 @@ export class StepService {
   }
 
   addStep(item:Step): Observable<Step> {
-    return this.http.post<any>(`${API_URL}/steps`, item).pipe(
+    return this.http.post<any>(`${API_URL}/owner/steps`, item).pipe(
       map(response =>
       {
         if(response.status=== 'error')
@@ -30,7 +30,7 @@ export class StepService {
   }
 
   listStep(id:number): Observable<Step[]> {
-     return this.http.get<any>(`${API_URL}/steps/processTypeVersion/${id}`).pipe(
+     return this.http.get<any>(`${API_URL}/owner/steps/processTypeVersion/${id}`).pipe(
       map(response => {
         if (response.status === 'error') {
           throw new Error(response.message);
@@ -42,7 +42,7 @@ export class StepService {
   }
 
   updateStep(item:Step): Observable<Step> {
-    return this.http.put<any>(`${API_URL}/steps`, item).pipe(
+    return this.http.put<any>(`${API_URL}/owner/steps`, item).pipe(
       map(response => {
         if (response.status === 'error') {
           throw new Error(response.message);
@@ -54,7 +54,7 @@ export class StepService {
   }
 
   getStepById(id:number): Observable<Step> {
-    return this.http.get<any>(`${API_URL}/steps/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/steps/${id}`).pipe(
       map(response => {
         if (response.status === 'error') {
           throw new Error(response.message);

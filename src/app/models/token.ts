@@ -1,4 +1,5 @@
 export interface Token {
   token:string,
-  userId:string
+  userId:string,
+  role:string
 }

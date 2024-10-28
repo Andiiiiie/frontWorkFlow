@@ -1,30 +1,36 @@
-<div class="row justify-content-center align-items-center vh-100">
+<div class="row justify-content-center align-items-center ">
   <div class="card-default">
     <div class="card-header">
-      <h3 class="card-title">Result Types</h3>
-
-      <div class="" *ngIf="!modifyResultType.id">
-        <h2>ADD</h2>
-        <form id="myForm1" class="input-group" (ngSubmit)="onSubmitSave()">
-          <input class="form-control" type="text" [(ngModel)]="newResultType.name" name="name" placeholder="Error">
-          <button type="submit" class="btn btn-default">
-            Enregistrer
-            <i class="fas fa-save"></i>
-          </button>
-        </form>
-      </div>
-      <div class="" *ngIf="modifyResultType.id">
-        <h2>MODIFY</h2>
-        <form id="myForm" class="input-group" (ngSubmit)="onSubmitModify()">
-          <input class="form-control" type="text" [(ngModel)]="modifyResultType.name" name=name  [value]="modifyResultType.name">
-          <button type="submit" class="btn btn-default">
-            Enregistrer
-            <i class="fas fa-save"></i>
-          </button>
-        </form>
-      </div>
+      <h3 class="card-title">Result types configuration</h3>
     </div>
     <div class="card-body">
+      <div class="card-dark">
+        <div class="card-header" *ngIf="!modifyResultType.id">
+          <h3 class="card-title">New Type</h3>
+        </div>
+        <div class="card-body" *ngIf="!modifyResultType.id">
+          <form id="myForm1" class="input-group" (ngSubmit)="onSubmitSave()">
+            <input class="form-control" type="text" [(ngModel)]="newResultType.name" name="name" placeholder="Error">
+            <button type="submit" class="btn btn-default">
+              Enregistrer
+              <i class="fas fa-save"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="card-header" *ngIf="modifyResultType.id">
+          <h3 class="card-title">Modify Type</h3>
+        </div>
+        <div class="card-body" *ngIf="modifyResultType.id">
+          <form id="myForm" class="input-group" (ngSubmit)="onSubmitModify()">
+            <input class="form-control" type="text" [(ngModel)]="modifyResultType.name" name=name  [value]="modifyResultType.name">
+            <button type="submit" class="btn btn-default">
+              Enregistrer
+              <i class="fas fa-save"></i>
+            </button>
+          </form>
+        </div>
+      </div>
       <table class="table table-bordered">
         <thead>
         <tr>
@@ -38,10 +44,10 @@
           <td></td>
           <td>{{resultType.name}}</td>
           <td>
-            <button class="btn btn-primary" (click)="modify(resultType.id)">
+            <button class="btn-circle btn-dark" (click)="modify(resultType.id)">
               <i class="fas fa-edit"></i>
             </button>
-            <button class="btn btn-danger" (click)="delete(resultType.id)">
+            <button class="btn-circle btn-danger" (click)="delete(resultType.id)">
               <i class="fas fa-trash"></i>
             </button>
           </td>

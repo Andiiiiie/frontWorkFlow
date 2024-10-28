@@ -1,90 +1,116 @@
 <aside class="main-sidebar control-sidebar-light elevation-4">
   <!-- Brand Logo -->
   <a href="#" class="brand-link text-center">
-    <i class="fas fa-laptop "></i>
-<!--    <img src="/img/logo.jpeg" alt="AdminLTE Logo" class="brand-image img-size-50 elevation-3" style="opacity: .8">-->
-    <span class="brand-text font-weight-bold"> Workflow </span>
+    <i class="fas fa-laptop"></i>
+    <!-- <img src="/img/logo.jpeg" alt="AdminLTE Logo" class="brand-image img-size-50 elevation-3" style="opacity: .8"> -->
+    <span class="brand-text font-weight-bold">Workflow</span>
   </a>
 
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-<!--    <div class="user-panel mt-3 pb-3 mb-3 d-flex">-->
-<!--      <div class="image">-->
-<!--        <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">-->
-<!--      </div>-->
-<!--      &lt;!&ndash;            <div class="description" sec:authorize="isAuthenticated()">&ndash;&gt;-->
-<!--      &lt;!&ndash;                <div th:text="${#authentication.principal.user.email}" class="d-block"  > </div>&ndash;&gt;-->
-<!--      &lt;!&ndash;            </div>&ndash;&gt;-->
-
-
-<!--    </div>-->
-
-    <!-- SidebarSearch Form -->
-
+    <div class="brand-link text-center">
+      <i class="fas fa-user"></i>
+      <span class="brand-text font-weight-medium">{{role}}</span>
+    </div>
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library --><li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-circle"></i>
-          <p>
-            Configuration
-            <i class="right fas fa-angle-left"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a  class="nav-link" [routerLink]="['/result-type-config']">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Result Types</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a  class="nav-link" [routerLink]="['/process-type-form']" >
-              <i class="far fa-circle nav-icon"></i>
-              <p>Process Type Creation</p>
-            </a>
-            <a  class="nav-link" [routerLink]="['/process-type-list']" >
-              <i class="far fa-circle nav-icon"></i>
-              <p>Process Type List</p>
-            </a>
-          </li>
-        </ul>
+        <!-- Admin Links -->
+        <li class="nav-item" *ngIf="role=='admin'">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-circle"></i>
+            <p>
+              Configuration
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/organism-list']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Organism</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/result-type-config']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Result Types</p>
+              </a>
+            </li>
+            <!-- Additional Admin Links -->
+            <!--
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/process-type-form']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Process Type Creation</p>
+              </a>
+              <a class="nav-link" [routerLink]="['/process-type-list']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Process Type List</p>
+              </a>
+            </li>
+            -->
+          </ul>
+        </li>
 
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-circle"></i>
-          <p>
-            Use
-            <i class="right fas fa-angle-left"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a  class="nav-link" [routerLink]="['/valid-process-type-list']">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Valid ProcessTypes</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a  class="nav-link" [routerLink]="['/process-list']" >
-              <i class="far fa-circle nav-icon"></i>
-              <p>Process list</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a  class="nav-link" [routerLink]="['/stats']" >
-              <i class="far fa-circle nav-icon"></i>
-              <p>Statistique</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+        <!-- Owner Links -->
+        <li class="nav-item" *ngIf="role=='owner'">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-circle"></i>
+            <p>
+              Configuration
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/process-type-form']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Process Type Creation</p>
+              </a>
 
-
-
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/process-type-list']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Process Type List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/consumer-token-list']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Gestion token</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" *ngIf="role=='owner'" >
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-circle"></i>
+            <p>
+              Use
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/valid-process-type-list']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Valid ProcessTypes</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/process-list']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Process</p>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

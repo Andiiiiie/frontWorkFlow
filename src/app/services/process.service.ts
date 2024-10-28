@@ -15,7 +15,7 @@ export class ProcessService {
   constructor(private http:HttpClient) { }
 
   createProcess(process: Process): Observable<Process> {
-    return this.http.post<any>(`${API_URL}/process`, process).pipe(
+    return this.http.post<any>(`${API_URL}/owner/process`, process).pipe(
       map(response => {
         if(response.status === 'error') {
           throw new Error(response.message);
@@ -46,7 +46,7 @@ export class ProcessService {
       params = params.set('type', type.toString());
     }
 
-    return this.http.get<any>(`${API_URL}/admin/process`, { params }).pipe(
+    return this.http.get<any>(`${API_URL}/owner/process`, { params }).pipe(
       map(response => {
         if (response.status === 'error') {
           throw new Error(response.message);
@@ -60,7 +60,7 @@ export class ProcessService {
 
   getHistoric(id:number):Observable<ProcessHistory[]>
   {
-    return this.http.get<any>(`${API_URL}/process/history/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/process/history/${id}`).pipe(
       map(response =>
       {
         if(response.status=== 'error')
@@ -75,7 +75,7 @@ export class ProcessService {
 
   getById(id:number)
   {
-    return this.http.get<any>(`${API_URL}/admin/process/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/process/${id}`).pipe(
       map(response =>
       {
         if(response.status=== 'error')
@@ -89,7 +89,7 @@ export class ProcessService {
 
   next(id:number,resultId:number)
   {
-    this.http.get<any>(`${API_URL}/process/next/${id}/${resultId}`).pipe(
+    this.http.get<any>(`${API_URL}/owner/process/next/${id}/${resultId}`).pipe(
       map(response =>
       {
         if(response.status=== 'error')
@@ -104,7 +104,7 @@ export class ProcessService {
 
 
   getActualTask(id:number):Observable<Task>{
-    return this.http.get<any>(`${API_URL}/admin/process/actual/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/owner/process/actual/${id}`).pipe(
       map(response =>
       {
         if(response.status=== 'error')

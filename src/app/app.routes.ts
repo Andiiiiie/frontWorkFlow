@@ -13,13 +13,21 @@ import { ProcessTypeVersionInfoComponent } from "./components/config/process-typ
 import { ValidProcessTypeListComponent } from "./components/use/valid-process-type-list/valid-process-type-list.component";
 import { ProcessListComponent } from "./components/use/process/process-list/process-list.component";
 import {ProcessPerformComponent} from "./components/use/process/process-perform/process-perform.component";
+import {OrganismListComponent} from "./components/config/organism/organism-list/organism-list.component";
+import {OrganismFormComponent} from "./components/config/organism/organism-form/organism-form.component";
+import {NoAccessPageComponent} from "./components/global/no-access-page/no-access-page.component";
+import {
+  ConsumerTokenListComponent
+} from "./components/use/consumer-token/consumer-token-list/consumer-token-list.component";
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [authGuardGuard] },
+  { path: '', component: HomeComponent, canActivate: [authGuardGuard], data: { role: 'admin' } },
   { path: 'login', component: LoginComponent },
-  { path: 'result-type-config', component: ResultTypeConfigComponent, canActivate: [authGuardGuard] },
-  { path: 'process-type-form', component: ProcessTypeFormComponent, canActivate: [authGuardGuard] },
-  { path: 'process-type-list', component: ProcessTypeListComponent, canActivate: [authGuardGuard] },
+  { path: 'no-access', component: NoAccessPageComponent },
+  { path: 'result-type-config', component: ResultTypeConfigComponent, canActivate: [authGuardGuard], data: { role: 'admin' } },
+  { path: 'process-type-form', component: ProcessTypeFormComponent, canActivate: [authGuardGuard], data: { role: 'owner' } },
+  { path: 'process-type-list', component: ProcessTypeListComponent, canActivate: [authGuardGuard],  data: { role: 'owner' } },
+
   { path: 'valid-process-type-list', component: ValidProcessTypeListComponent, canActivate: [authGuardGuard] },
   { path: 'process-type-info/:id', component: ProcessTypeInfoComponent, canActivate: [authGuardGuard] },
   { path: 'process-type-version-config/:id', component: ProcessTypeVersionConfigComponent, canActivate: [authGuardGuard] },
@@ -27,5 +35,9 @@ export const routes: Routes = [
   { path: 'task-config/:id', component: TaskConfigComponent, canActivate: [authGuardGuard] },
   { path: 'process-type-version-info/:id', component: ProcessTypeVersionInfoComponent, canActivate: [authGuardGuard] },
   { path: 'process-list', component: ProcessListComponent, canActivate: [authGuardGuard] },
-  {path:'process-perform/:id',component:ProcessPerformComponent,canActivate:[authGuardGuard]}
+  {path:'process-perform/:id',component:ProcessPerformComponent,canActivate:[authGuardGuard]},
+  {path:'organism-list',component:OrganismListComponent,canActivate:[authGuardGuard]},
+  {path:'organism-form',component:OrganismFormComponent,canActivate:[authGuardGuard]},
+
+  {path:'consumer-token-list',component:ConsumerTokenListComponent,canActivate:[authGuardGuard],data:{role:'owner'}},
 ];

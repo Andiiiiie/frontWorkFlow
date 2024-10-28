@@ -26,11 +26,16 @@ export class AuthService {
         return {
           token: response.data.token,
           userId: response.data.userId,
+          role: response.data.role
           // Ajoute d'autres propriétés si nécessaire
         } as Token;
       }
         )
     );
+  }
+
+  getUserRole(): string {
+    return localStorage.getItem('role') || '';
   }
 
   logout() {
@@ -51,11 +56,16 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  getUserId(): string | null {
+    return localStorage.getItem('userId');
+  }
+
   setToken(token: Token) {
     console.log('Token ito', token);
     localStorage.setItem('token', token.token);
     alert("token ato"+ localStorage.getItem('token'));
     localStorage.setItem('userId',token.userId);
+    localStorage.setItem('role',token.role);
   }
 
   private handleError(error: any) {
