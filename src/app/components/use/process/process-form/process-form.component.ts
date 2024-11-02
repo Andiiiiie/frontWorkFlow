@@ -14,7 +14,7 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './process-form.component.html',
-  styleUrl: './process-form.component.css'
+  styleUrls:[ './process-form.component.css']
 })
 export class ProcessFormComponent {
   newProcess: Process = {} as Process;

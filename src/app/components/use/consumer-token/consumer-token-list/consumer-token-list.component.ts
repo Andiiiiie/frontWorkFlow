@@ -13,6 +13,7 @@ import {AuthService} from "../../../../services/auth.service";
 import {OrganismService} from "../../../../services/organism.service";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
+import {NotificationsComponent} from "../../../global/notifications/notifications.component";
 
 @Component({
   selector: 'app-consumer-token-list',
@@ -20,10 +21,11 @@ import {NgForOf, NgIf} from "@angular/common";
   imports: [
     FormsModule,
     NgForOf,
-    NgIf
+    NgIf,
+    NotificationsComponent
   ],
   templateUrl: './consumer-token-list.component.html',
-  styleUrl: './consumer-token-list.component.css'
+  styleUrls:[ './consumer-token-list.component.css']
 })
 export class ConsumerTokenListComponent implements OnInit{
   tokens:ConsumerToken[]=[];

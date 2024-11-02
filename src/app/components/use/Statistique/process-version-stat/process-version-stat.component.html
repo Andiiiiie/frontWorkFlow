@@ -1,0 +1,36 @@
+<div class="row ">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Created process by months</div>
+      </div> <!-- Fermeture de card-header ici -->
+      <div class="card-body">
+        <div class="col-md-12">
+          <div class="alert-default-light align-items-center">
+            <form action="">
+              <div class="form-group">
+                <label for="dateTime">Type</label>
+                <input
+                  class="form-control"
+                  type="datetime-local"
+                  [(ngModel)]="selectedDateTime"
+                  (ngModelChange)="onDateTimeChange($event)"
+                  name="dateTime"  id="dateTime"
+                />
+              </div>
+            </form>
+
+          </div>
+          <p>La date et heure sélectionnées :  {{ selectDateTimeObject | date: 'dd/MM/yyyy HH:mm' }}</p>
+
+          <div style="display: block;"  class=" justify-content-center" >
+            <canvas #myChart width="400" height="100"></canvas>
+          </div>
+          <div *ngIf="processTypeStat.length==0" class="alert-default-light">
+            <p class="text-center">No data to display</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

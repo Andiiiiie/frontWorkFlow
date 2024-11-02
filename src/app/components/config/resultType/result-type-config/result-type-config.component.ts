@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
   standalone: true,
   imports: [SweetAlert2Module, FormsModule, NgForOf, NgIf],
   templateUrl: './result-type-config.component.html',
-  styleUrl: './result-type-config.component.css'
+  styleUrls: ['./result-type-config.component.css']
 })
 export class ResultTypeConfigComponent implements OnInit{
   resultTypes: ResultType[] = [];

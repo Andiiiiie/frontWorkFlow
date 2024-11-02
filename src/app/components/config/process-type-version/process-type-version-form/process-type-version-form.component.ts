@@ -14,7 +14,7 @@ import {ProcessTypeVersionService} from "../../../../services/process-type-versi
     NgIf
   ],
   templateUrl: './process-type-version-form.component.html',
-  styleUrl: './process-type-version-form.component.css'
+  styleUrls: ['./process-type-version-form.component.css']
 })
 export class ProcessTypeVersionFormComponent {
   newVersion: ProcessTypeVersion = {} as ProcessTypeVersion;

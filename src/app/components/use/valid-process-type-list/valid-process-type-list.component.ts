@@ -20,7 +20,7 @@ import {ProcessFormComponent} from "../process/process-form/process-form.compone
     ReactiveFormsModule
   ],
   templateUrl: './valid-process-type-list.component.html',
-  styleUrl: './valid-process-type-list.component.css'
+  styleUrls: ['./valid-process-type-list.component.css']
 })
 export class ValidProcessTypeListComponent {
   processTypes: ProcessType[] = [];

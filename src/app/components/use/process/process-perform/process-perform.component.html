@@ -1,12 +1,86 @@
 <style>
   .done
   {
-    background-color: #0f401b;
+    background-color: #6cc368;
+  }
+  .actual
+  {
+    background-color: #17a1b7;
   }
 
   .finished {
     background-color: #0f401b; /* Example style for finished steps */
   }
+
+  .completed-step {
+    background-color: #d4edda; /* Exemple de couleur de fond pour une étape complétée */
+    color: #155724; /* Couleur du texte pour une étape complétée */
+    border-color: #c3e6cb; /* Bordure pour une étape complétée */
+  }
+
+
+  .stepper-container {
+    display: flex;
+    align-items: flex-start; /* Aligner les éléments au début */
+    position: relative; /* Pour le positionnement des lignes */
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer le contenu */
+    position: relative; /* Pour le positionnement des traits */
+    width: 100px; /* Largeur de chaque étape */
+  }
+
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer le contenu dans l'étape */
+  }
+
+  .step-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #007bff; /* Couleur de l'étape */
+    margin-bottom: 5px; /* Espacement entre le cercle et le label */
+    border: 2px solid white; /* Bordure blanche pour le cercle */
+  }
+
+  .step-label {
+    text-align: center; /* Centre le texte */
+  }
+
+  .step-line {
+    position: absolute; /* Position absolue pour le trait */
+    width: 50px; /* Largeur du trait */
+    height: 4px; /* Hauteur du trait */
+    background-color: #007bff; /* Couleur du trait */
+    top: 20px; /* Ajuster pour être centré entre les étapes */
+    left: 50%; /* Centre le trait */
+    transform: translateX(-50%); /* Centrer le trait sur le cercle */
+  }
+
+  .step-completed-indicator {
+    margin-top: 5px; /* Espacement au-dessus du symbole de complétion */
+    color: green; /* Couleur pour le symbole de complétion */
+    font-size: 18px; /* Taille du symbole */
+  }
+
+
+  .step.completed {
+    background-color: #17a1b7;
+    color: #fff;
+  }
+
+  .step.ongoing {
+
+    background-color: #28a745;
+    color: #fff;
+  }
+
+
 </style>
 <div class="row justify-content-center align-items-center vh-100">
   <div class="card-default">
@@ -15,45 +89,99 @@
 
     </div>
     <div class="card-body">
-      <div *ngIf="process">
+      <div *ngIf="process" class="alert alert-default-dark">
         <p><strong>Request reference:</strong> {{ process.requestReference }}</p>
         <p><strong>Type :</strong> {{ process.typeName }}</p>
         <p><strong>Version:</strong> {{ process.processTypeVersionReference }}</p>
-        <p *ngIf="actualTask"><strong>Actual Task:</strong> {{ actualTask.name }}</p>
-        <p *ngIf="!actualTask"><strong>FINISHED OR STOPPED</strong> </p>
+
 
         <!-- Add more fields as necessary -->
       </div>
-      <table class="table table-bordered">
-        <thead>
-        <tr>
-          <th>Task</th>
-          <th>Result</th>
-          <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let history of list"  [ngClass]="{'done':history.id && !history.actual}">
-          <td>{{history.taskName}}</td>
-          <td> <p *ngIf="history.resultTypeId">{{history.resultTypeName}}</p> <p *ngIf="history.resultTypeId==null">Normal</p></td>
-          <td>
+      <div class="alert alert-info">
+        <p *ngIf="actualTask"><strong>Actual Task:</strong> {{ actualTask.name }}</p>
+        <p *ngIf="!actualTask"><strong>FINISHED OR STOPPED</strong> </p>
+      </div>
+<!--      <table class="table table-bordered">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>Task</th>-->
+<!--          <th>Result</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let history of list"  [ngClass]="{'done':history.id && !history.actual,'actual':history.actual}" >-->
+<!--          <td>{{history.taskName}}</td>-->
+<!--          <td> <p *ngIf="history.resultTypeId!=null">{{history.resultTypeName}}</p>-->
+<!--            <p *ngIf="history.resultTypeName==null && history.endingTime!=null">Normal</p>-->
+<!--            <p *ngIf="history.endingTime==null && history.actual==false">No result</p>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
 
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <div class="stepper-container">
+        <div *ngFor="let history of list; let i=index" class="step" >
+          <div class="step-content" [ngClass]="{'completed': history.id && !history.actual,'ongoing':history.actual}">
+            <div class="step-circle"></div>
+            <div class="step-label">{{history.taskName }}</div>
+          </div>
+          <div *ngIf="i < list.length - 1" class="step-line"></div>
+          <div *ngIf="history.endingTime != null" class="step-completed-indicator">✔</div>
+<!--          <p><strong>{{ history.taskName }}</strong></p>-->
+<!--          <p *ngIf="history.resultTypeId!=null">{{history.resultTypeName}}</p>-->
+<!--          <p *ngIf="history.resultTypeName==null && history.endingTime!=null">Normal</p>-->
+<!--          <p *ngIf="history.endingTime==null && history.actual==false">No result</p>-->
+<!--        </div>-->
+      </div>
+
 
 
       <!-- Example usage in a component template -->
-      <mat-horizontal-stepper>
-        <mat-step *ngFor="let step of list" label="{{step.taskName}}"  [ngClass]="{'finished': step.endingTime}" >
-          <div *ngIf="step.id">
-            <p><strong>Starting time </strong> {{ step.startingTime }}</p>
-            <div> <strong>Result:</strong> <p *ngIf="step.resultTypeId">{{step.resultTypeName}}</p> <p *ngIf="step.resultTypeId==null">Normal</p> </div>
-          </div>
-        </mat-step>
-      </mat-horizontal-stepper>
+<!--      <mat-horizontal-stepper>-->
+<!--        <mat-step *ngFor="let step of list" label="{{step.taskName}}"  [ngClass]="{'finished': step.endingTime}" >-->
+<!--          <div *ngIf="step.id">-->
+<!--            <p><strong>Starting time </strong> {{ step.startingTime }}</p>-->
+<!--            <div> <strong>Result:</strong> <p *ngIf="step.resultTypeId">{{step.resultTypeName}}</p> <p *ngIf="step.resultTypeId==null">Normal</p> </div>-->
+<!--          </div>-->
+<!--        </mat-step>-->
+<!--      </mat-horizontal-stepper>-->
 
+<!--      <mat-horizontal-stepper>-->
+<!--        <ng-container *ngFor="let step of list">-->
+<!--          <mat-step label="{{step.taskName}}" [ngClass]="{'finished': step.endingTime}">-->
+<!--            <div *ngIf="step.id">-->
+<!--              <p><strong>Starting time </strong> {{ step.startingTime }}</p>-->
+<!--              <div>-->
+<!--                <strong>Result:</strong>-->
+<!--                <p *ngIf="step.resultTypeId">{{step.resultTypeName}}</p>-->
+<!--                <p *ngIf="step.resultTypeId == null">Normal</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </mat-step>-->
+<!--        </ng-container>-->
+<!--      </mat-horizontal-stepper>-->
+
+<!--      <p-steps [model]="steps"></p-steps>-->
+<!--      <ng-container *ngFor="let step of list; let i = index">-->
+<!--        <div [ngClass]="{'finished': step.endingTime}" *ngIf="activeSteps.has(i)">-->
+<!--          <div *ngIf="step.id">-->
+<!--            <p><strong>Starting time </strong> {{ step.startingTime }}</p>-->
+<!--            <div>-->
+<!--              <strong>Result:</strong>-->
+<!--              <p *ngIf="step.resultTypeId">{{step.resultTypeName}}</p>-->
+<!--              <p *ngIf="step.resultTypeId == null">Normal</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </ng-container>-->
+<!--      <ngx-stepper>-->
+<!--        <ngx-step *ngFor="let step of list" label="{{step.taskName}}" [ngClass]="{'completed-step': step.endingTime!=null}">>-->
+<!--          <div *ngIf="step.id" class="alert-dark">-->
+<!--            <p><strong>Starting time </strong> {{ step.startingTime }}</p>-->
+<!--            <div> <strong>Result:</strong> <p *ngIf="step.resultTypeId">{{step.resultTypeName}}</p> <p *ngIf="step.resultTypeId==null">Normal</p> </div>-->
+<!--          </div>-->
+<!--        </ngx-step>-->
+<!--      </ngx-stepper>-->
 
     </div>
     <div class="card-footer">
@@ -68,7 +196,6 @@
             </form>
             <div class="d-flex justify-content-between" *ngIf="actualTask">
               <button mat-raised-button color="primary">
-                <mat-icon>home</mat-icon>
                 <button class="btn btn-dark" (click)="next()" >Next</button>
               </button>
             </div>

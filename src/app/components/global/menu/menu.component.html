@@ -109,6 +109,36 @@
                 <p>Process</p>
               </a>
             </li>
+
+          </ul>
+        </li>
+        <li class="nav-item" *ngIf="role=='owner'" >
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-circle"></i>
+            <p>
+              Monitoring
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/process-count-stat']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Process number stat</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/process-state-stat']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Process state stat</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/process-version-stat']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Process version stat</p>
+              </a>
+            </li>
           </ul>
         </li>
       </ul>

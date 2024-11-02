@@ -14,7 +14,7 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './task-form.component.html',
-  styleUrl: './task-form.component.css'
+  styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent implements OnInit{
   newTask:Task={} as Task;

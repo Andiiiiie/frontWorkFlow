@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
     NgForOf,
     ReactiveFormsModule],
   templateUrl: './process-type-form.component.html',
-  styleUrl: './process-type-form.component.css'
+  styleUrls: ['./process-type-form.component.css']
 })
 export class ProcessTypeFormComponent implements OnInit{
   newProcessType: ProcessType = {} as ProcessType;

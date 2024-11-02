@@ -19,7 +19,7 @@ import {NgForOf, NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './task-config.component.html',
-  styleUrl: './task-config.component.css'
+  styleUrls:[ './task-config.component.css']
 })
 export class TaskConfigComponent implements OnInit{
   task:Task={} as Task;

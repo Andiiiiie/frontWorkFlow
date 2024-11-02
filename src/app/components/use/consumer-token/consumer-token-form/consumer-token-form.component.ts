@@ -13,7 +13,7 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './consumer-token-form.component.html',
-  styleUrl: './consumer-token-form.component.css'
+  styleUrls:[ './consumer-token-form.component.css']
 })
 export class ConsumerTokenFormComponent {
   newConsumerToken: ConsumerToken = {} as ConsumerToken;

@@ -14,7 +14,7 @@ import {User} from "../../../../models/user";
         NgIf
     ],
   templateUrl: './organism-owner-form.component.html',
-  styleUrl: './organism-owner-form.component.css'
+  styleUrls: ['./organism-owner-form.component.css']
 })
 export class OrganismOwnerFormComponent {
   newOwner: User = {} as User;

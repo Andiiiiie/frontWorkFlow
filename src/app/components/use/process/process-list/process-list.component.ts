@@ -19,7 +19,7 @@ import {NgForOf, NgIf} from "@angular/common";
     RouterLink
   ],
   templateUrl: './process-list.component.html',
-  styleUrl: './process-list.component.css'
+  styleUrls: ['./process-list.component.css']
 })
 export class ProcessListComponent implements OnInit{
   processes: Process[] = [];

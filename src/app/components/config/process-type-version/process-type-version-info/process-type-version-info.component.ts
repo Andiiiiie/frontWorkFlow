@@ -16,7 +16,7 @@ import {ActivatedRoute, Router} from "@angular/router";
     NgForOf
   ],
   templateUrl: './process-type-version-info.component.html',
-  styleUrl: './process-type-version-info.component.css'
+  styleUrls:[ './process-type-version-info.component.css']
 })
 export class ProcessTypeVersionInfoComponent implements OnInit {
   processTypeVersionInfo: ProcessTypeVersionInfo = {} as ProcessTypeVersionInfo;

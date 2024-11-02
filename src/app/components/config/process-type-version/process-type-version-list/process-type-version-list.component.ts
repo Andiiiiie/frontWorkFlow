@@ -18,7 +18,7 @@ import Swal from "sweetalert2";
     RouterLink
   ],
   templateUrl: './process-type-version-list.component.html',
-  styleUrl: './process-type-version-list.component.css'
+  styleUrls: ['./process-type-version-list.component.css']
 })
 export class ProcessTypeVersionListComponent {
   id: number = 0;

@@ -14,7 +14,7 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './step-form.component.html',
-  styleUrl: './step-form.component.css'
+  styleUrls:[ './step-form.component.css']
 })
 export class StepFormComponent implements OnInit{
   newStep:Step={} as Step;

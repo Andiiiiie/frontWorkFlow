@@ -13,7 +13,7 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './organism-form.component.html',
-  styleUrl: './organism-form.component.css'
+  styleUrls: ['./organism-form.component.css']
 })
 export class OrganismFormComponent  {
   newOrganism: Organism = {} as Organism;

@@ -5,12 +5,11 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { jwtInterceptorFn } from './app/auth/jwt-interceptor.interceptor';
 import {provideRouter} from "@angular/router";
 import {routes} from "./app/app.routes";
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
     provideRouter(routes),
-    provideHttpClient(withInterceptors([jwtInterceptorFn])), provideAnimationsAsync()
+    provideHttpClient(withInterceptors([jwtInterceptorFn])),
   ]
 }).catch((err) => console.error(err));

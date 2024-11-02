@@ -20,7 +20,7 @@ import {NgForOf, NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './process-type-version-config.component.html',
-  styleUrl: './process-type-version-config.component.css'
+  styleUrls: ['./process-type-version-config.component.css']
 })
 export class ProcessTypeVersionConfigComponent implements OnInit {
   processTypeVersion: ProcessTypeVersion = {} as ProcessTypeVersion;

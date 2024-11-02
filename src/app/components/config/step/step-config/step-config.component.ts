@@ -20,7 +20,7 @@ import {NgForOf, NgIf} from "@angular/common";
 
   ],
   templateUrl: './step-config.component.html',
-  styleUrl: './step-config.component.css'
+  styleUrls: ['./step-config.component.css']
 })
 export class StepConfigComponent {
   step: Step = {} as Step;

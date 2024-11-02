@@ -22,7 +22,7 @@ import {OrganismOwnerFormComponent} from "../organism-owner-form/organism-owner-
     ReactiveFormsModule
   ],
   templateUrl: './organism-list.component.html',
-  styleUrl: './organism-list.component.css'
+  styleUrls: ['./organism-list.component.css']
 })
 export class OrganismListComponent implements OnInit {
   organisms: Organism[] = [];

@@ -19,6 +19,17 @@ import {NoAccessPageComponent} from "./components/global/no-access-page/no-acces
 import {
   ConsumerTokenListComponent
 } from "./components/use/consumer-token/consumer-token-list/consumer-token-list.component";
+import {LineStatComponent} from "./components/use/Statistique/line-stat/line-stat.component";
+import {ChartComponent} from "./components/use/Statistique/chart/chart.component";
+import {PieChartComponent} from "./components/use/Statistique/pie-chart/pie-chart.component";
+import {BarChartComponent} from "./components/use/Statistique/bar-chart/bar-chart.component";
+import {
+  ProcessNumberStatComponent
+} from "./components/use/Statistique/process-number-stat/process-number-stat.component";
+import {ProcessStateStatComponent} from "./components/use/Statistique/process-state-stat/process-state-stat.component";
+import {
+  ProcessVersionStatComponent
+} from "./components/use/Statistique/process-version-stat/process-version-stat.component";
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuardGuard], data: { role: 'admin' } },
@@ -39,5 +50,15 @@ export const routes: Routes = [
   {path:'organism-list',component:OrganismListComponent,canActivate:[authGuardGuard]},
   {path:'organism-form',component:OrganismFormComponent,canActivate:[authGuardGuard]},
 
-  {path:'consumer-token-list',component:ConsumerTokenListComponent,canActivate:[authGuardGuard],data:{role:'owner'}},
+  {path:'consumer-token-list',component:ConsumerTokenListComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
+
+  {path:'stat',component:ChartComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
+  {path:'pie',component:PieChartComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
+  {path:'bar',component:BarChartComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
+
+  {path:'process-count-stat',component:ProcessNumberStatComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
+  {path:'process-state-stat',component:ProcessStateStatComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
+  {path:'process-version-stat',component:ProcessVersionStatComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
+
+
 ];

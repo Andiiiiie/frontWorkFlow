@@ -20,9 +20,9 @@ import {
   imports: [FormsModule,
     NgForOf,
     ReactiveFormsModule,
-    RouterLink, NgIf, MatIcon],
+    RouterLink, NgIf],
   templateUrl: './process-type-list.component.html',
-  styleUrl: './process-type-list.component.css'
+  styleUrls: ['./process-type-list.component.css']
 })
 export class ProcessTypeListComponent implements OnInit {
   processTypes: ProcessType[] = [];

@@ -11,7 +11,7 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+  styleUrls: ['./menu.component.css']
 })
 export class MenuComponent  implements OnInit {
   role: string |null=null;

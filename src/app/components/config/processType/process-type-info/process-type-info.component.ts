@@ -14,7 +14,7 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './process-type-info.component.html',
-  styleUrl: './process-type-info.component.css'
+  styleUrls: ['./process-type-info.component.css']
 })
 export class ProcessTypeInfoComponent implements OnInit {
   processType: ProcessType= {} as ProcessType;

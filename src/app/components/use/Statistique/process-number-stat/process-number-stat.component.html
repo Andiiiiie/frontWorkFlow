@@ -1,0 +1,45 @@
+<div class="row ">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Created process by months</div>
+      </div> <!-- Fermeture de card-header ici -->
+      <div class="card-body">
+        <div class="col-md-12">
+          <div class="alert-default-light align-items-center">
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="year">Année </label>
+                  <select class="form-control" id="year" name="year" [(ngModel)]="year">
+                    <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="type">Type</label>
+                  <select class="form-control" id="type" name="type" [(ngModel)]="processType.id">
+                    <option *ngFor="let type of processTypes" [value]="type.id">{{ type.name }}</option>
+                  </select>
+                </div>
+
+              </div>
+              <div class="form-group row mt-3">
+                <div class="col text-center">
+                  <button type="submit" class="btn btn-default">Voir</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div style="display: block;"  class=" justify-content-center" >
+            <canvas #myChart width="400" height="100"></canvas>
+          </div>
+          <div *ngIf="processCountByMonth.length==0" class="alert-default-light">
+            <p class="text-center">No data to display</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

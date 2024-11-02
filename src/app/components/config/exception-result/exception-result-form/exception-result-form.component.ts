@@ -19,7 +19,7 @@ import {ResultTypeService} from "../../../../services/result-type.service";
     NgForOf
   ],
   templateUrl: './exception-result-form.component.html',
-  styleUrl: './exception-result-form.component.css'
+  styleUrls: ['./exception-result-form.component.css']
 })
 export class ExceptionResultFormComponent implements OnInit{
   newExceptionResult:ExceptionResult={} as ExceptionResult;

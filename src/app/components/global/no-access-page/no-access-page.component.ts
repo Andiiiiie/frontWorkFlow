@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './no-access-page.component.html',
-  styleUrl: './no-access-page.component.css'
+  styleUrls: ['./no-access-page.component.css']
 })
 export class NoAccessPageComponent {
 
