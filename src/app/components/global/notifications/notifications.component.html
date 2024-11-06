@@ -1,3 +1,68 @@
+<!--<style>-->
+<!--  .notification-item {-->
+<!--    white-space: normal;-->
+<!--    padding: 10px;-->
+<!--    margin: 5px 0;-->
+<!--    font-size: 14px;-->
+<!--    color: #333;-->
+<!--    transition: background-color 0.3s;-->
+<!--  }-->
+
+<!--  .notification-item:hover {-->
+<!--    background-color: #f1f1f1;-->
+<!--  }-->
+<!--</style>-->
+<!--<nav class="navbar navbar-expand navbar-white navbar-light">-->
+<!--  <ul class="navbar-nav ml-auto">-->
+<!--    <li class="nav-item dropdown">-->
+<!--      <a class="nav-link" data-toggle="dropdown" href="#">-->
+<!--        <i class="far fa-bell"></i>-->
+<!--        <span class="badge badge-warning navbar-badge">{{ notifications.length }}</span>-->
+<!--      </a>-->
+<!--      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">-->
+<!--        <span class="dropdown-item dropdown-header">{{ notifications.length }} Notifications</span>-->
+<!--        <div class="dropdown-divider"></div>-->
+<!--        <a *ngFor="let notification of notifications" class="dropdown-item notification-item">-->
+<!--          {{ notification.message }}-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</nav>-->
+<style>
+  .notification-item {
+    white-space: normal;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.3s;
+  }
+
+  .notification-item:hover {
+    background-color: #f1f1f1;
+  }
+
+  .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .see-all-button {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: #007bff;
+    cursor: pointer;
+  }
+
+  .see-all-button:hover {
+    background-color: #f8f9fa;
+    color: #0056b3;
+    text-decoration: underline;
+  }
+</style>
+
 <nav class="navbar navbar-expand navbar-white navbar-light">
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">
@@ -8,8 +73,20 @@
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">{{ notifications.length }} Notifications</span>
         <div class="dropdown-divider"></div>
-        <a *ngFor="let notification of notifications" class="dropdown-item">
-          <i class="fas fa-envelope mr-2"></i> {{ notification.message }}
+
+        <!-- Liste des notifications -->
+        <ng-container *ngFor="let notification of notifications">
+          <a class="dropdown-item notification-item">
+            <strong>{{ notification.subject }}</strong>
+            <p>{{ notification.message }}</p>
+            <small class="text-muted">isEmail: {{notification.isEmail}}</small>
+          </a>
+          <div class="dropdown-divider"></div>
+        </ng-container>
+
+        <!-- Bouton "Tout voir" -->
+        <a (click)="loadAllNotifications()" class="see-all-button">
+          Tout voir
         </a>
       </div>
     </li>

@@ -116,5 +116,19 @@ export class ProcessService {
       catchError(this.handleError));
   }
 
+  stop(id:number)
+  {
+    return this.http.get<any>(`${API_URL}/owner/process/stop/${id}`).pipe(
+      map(response =>
+      {
+        if(response.status=== 'error')
+        {
+          throw new Error(response.message);
+        }
+        return response.data as Process;
+      }),
+      catchError(this.handleError));
+  }
+
 }
 

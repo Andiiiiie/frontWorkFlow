@@ -4,7 +4,7 @@ import {ProcessTypeVersionService} from "../../../../services/process-type-versi
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import Swal from "sweetalert2";
 
 @Component({
@@ -24,7 +24,7 @@ export class ProcessTypeVersionListComponent {
   id: number = 0;
   processTypeVersions: ProcessTypeVersion[] = [];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number },private dialogRef: MatDialogRef<ProcessTypeVersionListComponent>,private processTypeVersionService: ProcessTypeVersionService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number },private dialogRef: MatDialogRef<ProcessTypeVersionListComponent>,private processTypeVersionService: ProcessTypeVersionService,private router: Router) {
     console.log('Received ID:', data.id);
     this.id = data.id;
     this.setProcessTypeVersions();
@@ -73,6 +73,11 @@ export class ProcessTypeVersionListComponent {
         );
       }
     });
+  }
+
+  configure(id:number) {
+    this.router.navigate(['/process-type-version-config', id]);
+    this.dialogRef.close(id);
   }
 
 

@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {Step} from "../../../../models/step";
 import { Task } from '../../../../models/task';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
@@ -22,11 +22,17 @@ import {NgForOf, NgIf} from "@angular/common";
   templateUrl: './step-config.component.html',
   styleUrls: ['./step-config.component.css']
 })
-export class StepConfigComponent {
+export class StepConfigComponent implements OnInit,OnDestroy{
   step: Step = {} as Step;
   tasks: Task[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router,private stepService:StepService,private taskService:TaskService,private  cdr:ChangeDetectorRef,private dialog: MatDialog) {
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.setStep(params['id']);
+    });
   }
 
   setStep(id:number) {
@@ -107,17 +113,15 @@ export class StepConfigComponent {
     });
   }
 
-
-
-
-
-
-
-
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.setStep(params['id']);
-    });
+  ngOnDestroy(): void {
+    if(this.dialog)
+    {
+      this.dialog.closeAll();
+    }
   }
+
+
+
+
 
 }

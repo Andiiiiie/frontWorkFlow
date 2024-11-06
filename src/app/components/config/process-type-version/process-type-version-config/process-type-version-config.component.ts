@@ -37,7 +37,13 @@ export class ProcessTypeVersionConfigComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.route.paramMap.subscribe(params => {
+      let id = params.get('id');
+      if (id) {
+        console.log("id", id)
+        this.setProcessTypeVersion(Number(id));
+      }
+    });
   }
 
   setProcessTypeVersion(id:number) {

@@ -6,4 +6,5 @@ export interface ConsumerToken {
   deleted:boolean,
   value:string,
   lastActivity:string,
+  expirationDate:string,
 }

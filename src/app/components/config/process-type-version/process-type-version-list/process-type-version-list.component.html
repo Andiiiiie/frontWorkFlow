@@ -26,7 +26,7 @@
           <td>{{processType.creationDate}}</td>
           <td>{{processType.reference}}</td>
           <td>
-            <button *ngIf="processType.state==0" [routerLink]="['/process-type-version-config',processType.id]" class="btn btn-secondary btn-sm mx-1" >config <i class="fas fa-pen "></i></button>
+            <button *ngIf="processType.state==0" (click)="configure(processType.id)"  class="btn btn-secondary btn-sm mx-1" >config <i class="fas fa-pen "></i></button>
 
             <button *ngIf="processType.state==0"  (click)="finalize(processType.id)" class="btn btn-secondary btn-sm mx-1" >finalize  <i class="fas fa-user-lock "></i></button>
 

@@ -19,10 +19,24 @@ import {User} from "../../../../models/user";
 export class OrganismOwnerFormComponent {
   newOwner: User = {} as User;
   id: number = 0;
+  organism:Organism = {} as Organism;
   error:string|null=null;
   constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number },private dialogRef: MatDialogRef<OrganismOwnerFormComponent>,private organismService: OrganismService) {
     console.log('Received ID:', data.id);
     this.id = data.id;
+    this.setOrganism(this.id);
+  }
+
+  setOrganism(id:number)
+  {
+    this.organismService.getOrganismById(id).subscribe({
+      next: organism => {
+        this.organism = organism;
+      },
+      error: error => {
+        this.error = error;
+    }
+    });
   }
 
   onSubmit()

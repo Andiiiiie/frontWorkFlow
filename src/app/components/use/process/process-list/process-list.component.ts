@@ -8,6 +8,7 @@ import {ProcessTypeService} from "../../../../services/process-type.service";
 import {ProcessStateTypeService} from "../../../../services/process-state-type.service";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgForOf, NgIf} from "@angular/common";
+import Swal from "sweetalert2";
 @Component({
   selector: 'app-process-list',
   standalone: true,
@@ -116,6 +117,18 @@ export class ProcessListComponent implements OnInit{
     this.page--;
     this.getProcesses(this.page, this.size);
 
+  }
+
+  stopProcess(id:number)
+  {
+    this.processService.stop(id).subscribe(
+      data => {
+        this.getProcesses(this.page, this.size);
+      },
+      error => {
+        Swal.fire('Erreur', 'Erreur lors de l\'arrêt du processus', 'error');
+      }
+    );
   }
 
 

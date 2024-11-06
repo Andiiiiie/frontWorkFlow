@@ -4,6 +4,7 @@ import {StepService} from "../../../../services/step.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {NgIf} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-step-form',
@@ -20,7 +21,7 @@ export class StepFormComponent implements OnInit{
   newStep:Step={} as Step;
   idVersion:number=0;
   error:string='';
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number },private dialogRef: MatDialogRef<StepFormComponent>,private stepService:StepService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number },private dialogRef: MatDialogRef<StepFormComponent>,private stepService:StepService,private router: Router) {
     this.idVersion = data.id;
   }
 
@@ -34,6 +35,9 @@ export class StepFormComponent implements OnInit{
       next: step => {
         console.log('Step created:', step);
         this.dialogRef.close();
+        this.router.navigate(['/process-type-version-config', this.idVersion]);
+
+
       },
       error: error => {
         this.error = error;

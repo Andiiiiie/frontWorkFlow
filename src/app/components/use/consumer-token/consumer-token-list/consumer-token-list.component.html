@@ -1,7 +1,7 @@
 <div class="row justify-content-center align-items-center ">
   <div class="card-default">
     <div class="card-header">
-      <h3 class="card-title">Tokens  {{organism.name}}</h3>
+      <h3 class="card-title">Tokens de l'organisme :  {{organism.name}}</h3>
 <!--      <app-notifications ></app-notifications>-->
 
     </div>
@@ -10,17 +10,24 @@
       <table class="table table-bordered">
         <thead>
         <tr>
-          <th>Consumer </th>
-          <th>Value</th>
-          <th>Last activity</th>
+          <th>Identifiant </th>
+          <th>Valeur </th>
+          <th>Derniere activite</th>
+          <th>Date d'expiration</th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let token of tokens">
           <td>{{token.consumerId}}</td>
-          <td>{{token.value}}</td>
-          <td>{{token.lastActivity}}</td>
+          <td>{{token.value}}
+            <button class="btn btn-link" (click)="copyTokenValue(token.value)">
+              <i class="fas fa-copy"></i> Copier
+            </button>
+          </td>
+          <td>{{ getDate(token.lastActivity) }}</td>
+          <td>{{ getDate(token.expirationDate) }}</td>
+<!--          <td>{{token.expirationDate}}</td>-->
           <td>
 <!--            <button  class="btn-default" (click)="addVersion(processType.id)">-->
 <!--              <i class="fas fa-plus"></i>-->
@@ -38,7 +45,7 @@
       </table>
     </div>
     <div class="card-footer">
-      <button class="btn btn-dark" (click)="addConsumerToken()" >add</button>
+      <button class="btn btn-dark" (click)="addConsumerToken()" >ajouter token</button>
 
     </div>
   </div>

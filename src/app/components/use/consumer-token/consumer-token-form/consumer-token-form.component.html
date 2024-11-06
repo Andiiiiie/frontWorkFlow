@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">New Version</h3>
+    <h3 class="card-title">Nouveau token de consommateur</h3>
 
     <div class="card-tools">
 
@@ -9,11 +9,11 @@
   <form   (ngSubmit)="onSubmit()">
     <div class="card-body">
       <div class="form-group"   >
-        <label >Consumer Identifier</label>
+        <label >Identifiant</label>
         <input type="text" [(ngModel)]="newConsumerToken.consumerId"  name="consumerId" class="form-control"  >
       </div>
       <div class="form-group"   >
-        <label >Day duration</label>
+        <label >Durée de validité (jour)</label>
         <input type="number" min="0" [(ngModel)]="newConsumerToken.duration"  name="duration" class="form-control"  >
       </div>
 

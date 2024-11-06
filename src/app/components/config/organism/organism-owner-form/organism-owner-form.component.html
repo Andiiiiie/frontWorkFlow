@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">New Organism</h3>
+    <h3 class="card-title">Propriétaire de l'organisme : {{organism.name}}</h3>
 
     <div class="card-tools">
 
@@ -9,7 +9,7 @@
   <form   (ngSubmit)="onSubmit()">
     <div class="card-body">
       <div class="form-group"   >
-        <label >Login</label>
+        <label >Identifiant</label>
         <input type="text" [(ngModel)]="newOwner.login" name="login"  class="form-control"  >
       </div>
       <div class="form-group"   >
@@ -17,7 +17,7 @@
         <input type="email" [(ngModel)]="newOwner.email"  name="email"  class="form-control"  >
       </div>
       <div class="form-group"   >
-        <label >Password</label>
+        <label >Mot de passe</label>
         <input type="password" [(ngModel)]="newOwner.password"   name="password"  class="form-control"  >
       </div>
 
@@ -28,7 +28,7 @@
     </div>
     <!-- /.card-body -->
     <div class="card-footer align-content-center">
-      <button type="submit" class="btn btn-dark "> Submit </button>
+      <button type="submit" class="btn btn-dark "> Enregistrer </button>
     </div>
   </form>
 

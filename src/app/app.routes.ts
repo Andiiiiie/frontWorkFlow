@@ -30,6 +30,8 @@ import {ProcessStateStatComponent} from "./components/use/Statistique/process-st
 import {
   ProcessVersionStatComponent
 } from "./components/use/Statistique/process-version-stat/process-version-stat.component";
+import {NotificationListComponent} from "./components/monitoring/notification-list/notification-list.component";
+import {RegisterComponent} from "./components/global/register/register.component";
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuardGuard], data: { role: 'admin' } },
@@ -60,5 +62,6 @@ export const routes: Routes = [
   {path:'process-state-stat',component:ProcessStateStatComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
   {path:'process-version-stat',component:ProcessVersionStatComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
 
-
+  {path:'all-notifications',component:NotificationListComponent,canActivate:[authGuardGuard,],data:{role:'owner'}},
+  {path:'register',component:RegisterComponent,canActivate:[authGuardGuard,],data:{role:'admin'}},
 ];

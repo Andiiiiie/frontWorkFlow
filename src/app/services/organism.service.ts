@@ -64,6 +64,19 @@ export class OrganismService {
     );
   }
 
+  getOrganismById(id:number):Observable<Organism>
+  {
+    return this.http.get<any>(`${API_URL}/admin/organism/${id}`).pipe(
+      map(response => {
+        if(response.status === 'error') {
+          throw new Error(response.message);
+        }
+        return response.data as Organism;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
 
 
 

@@ -28,15 +28,21 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/register']">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Nouveau administrateur</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" [routerLink]="['/organism-list']">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Organism</p>
+                <p>Organismes</p>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/result-type-config']">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Result Types</p>
+                <p>Type d'exceptions</p>
               </a>
             </li>
             <!-- Additional Admin Links -->

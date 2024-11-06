@@ -12,8 +12,10 @@ import {Organism} from "../../../../models/organism";
 import {AuthService} from "../../../../services/auth.service";
 import {OrganismService} from "../../../../services/organism.service";
 import {FormsModule} from "@angular/forms";
-import {NgForOf, NgIf} from "@angular/common";
+import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {NotificationsComponent} from "../../../global/notifications/notifications.component";
+
+
 
 @Component({
   selector: 'app-consumer-token-list',
@@ -22,7 +24,8 @@ import {NotificationsComponent} from "../../../global/notifications/notification
     FormsModule,
     NgForOf,
     NgIf,
-    NotificationsComponent
+    NotificationsComponent,
+    DatePipe
   ],
   templateUrl: './consumer-token-list.component.html',
   styleUrls:[ './consumer-token-list.component.css']
@@ -91,6 +94,34 @@ export class ConsumerTokenListComponent implements OnInit{
       }
     );
   }
+
+  // getDate(date:string):string{
+  //   console.log(date);
+  //   return new Date(date).toLocaleDateString();
+  // }
+  getDate(date: string): string {
+    return new Date(date).toLocaleString('fr-FR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+  }
+
+  copyTokenValue(value: string): void {
+    navigator.clipboard.writeText(value).then(
+      () => {
+        console.log('Token copié :', value);
+        alert('Le token a été copié dans le presse-papiers !');
+      },
+      (err) => {
+        console.error('Échec de la copie du token', err);
+      }
+    );
+  }
+
 
   protected readonly Number = Number;
 }
